@@ -29,12 +29,12 @@ export class CreateRestaurantDto {
   @IsArray()
   readonly workingHours: string[];
 
-  @IsNumber()
-  readonly rating: number;
+  @IsString()
+  readonly rating: string;
 
-  @IsNumber()
+  @IsString()
   readonly LowestRatedReview: string;
 
-  @IsNumber()
+  @IsString()
   readonly HighestRatedReview: string;
 }
