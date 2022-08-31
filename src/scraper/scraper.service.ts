@@ -44,11 +44,11 @@ export class ScraperService {
     let restaurantlinks = [];
     const pageScraperHelper = new PageScraperHelper();
 
-    for (let page = 0; page < 50; page += 50) {
+    for (let page = 0; page < 5; page++) {
       const link = `https://www.yelp.com/search?find_loc=${city}&start=${
         page * 10
       }`;
-      const restaurantListPageHTML = await pageScraperHelper.scrapePage(link); // axios.get(url) => html
+      const restaurantListPageHTML = await pageScraperHelper.scrapePage(link) + ''; // axios.get(url) => html
       restaurantlinks = restaurantlinks.concat(
         this.getRestaurantsLinks(restaurantListPageHTML),
       );
