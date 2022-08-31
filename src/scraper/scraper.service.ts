@@ -1,3 +1,4 @@
+import { ConsoleLogger } from "@nestjs/common";
 import { CheerioAPI, load } from "cheerio";
 import { InfoScraperHelper } from "./helpers/info-scraper.helper";
 import { PageScraperHelper } from "./helpers/page-scraper.helper";
@@ -11,7 +12,6 @@ export class ScraperService {
 
   async getRestaurauntInfo(restaurantPageHTML: string, queryCity: string) {
     const $: CheerioAPI = load(restaurantPageHTML);
-    console.log(restaurantPageHTML);
     const infoScraperHelper = new InfoScraperHelper($);
 
     const name: string = infoScraperHelper.scrapeName();
@@ -49,17 +49,27 @@ export class ScraperService {
         page * 10
       }`;
       const restaurantListPageHTML =
-        (await pageScraperHelper.scrapePage(link)) + ''; // axios.get(url) => html
-
+        (await pageScraperHelper.scrapePage(link)) + ''; // axios.get(url) => html V
       restaurantlinks = restaurantlinks.concat(
-        this.getRestaurantsLinks(restaurantListPageHTML),
+        await this.getRestaurantsLinks(restaurantListPageHTML),
       );
     }
+    console.log(
+      'RESTAURANT LINKS ---',
+      restaurantlinks,
+      'RESTAURANT LINKS ---',
+    );
 
     const restaurantsData = [];
 
     for (const restaurantsLink of restaurantlinks) {
       const restaurantLink = 'https://www.yelp.com/' + restaurantsLink;
+      console.log(
+        'RESTAURANT LINK -------------1',
+        restaurantLink,
+        restaurantsLink,
+        'RESTAURANT LINK -------------1');
+
       const restaurantPageHTML = await pageScraperHelper.scrapePage(
         restaurantLink,
       );

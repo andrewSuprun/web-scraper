@@ -6,6 +6,7 @@ export class PageScraperHelper {
   scrapePage = async (url: string): Promise<string> => {
     try {
       const { data } = await axios.get(url);
+      // console.log(data, 'data------')
       return data + '';
     } catch (error) {
       console.error(error.message);
