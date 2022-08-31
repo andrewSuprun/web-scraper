@@ -1,5 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Restaurant {
@@ -28,8 +27,8 @@ export class Restaurant {
   rating: string;
 
   @Column()
-  lowestRating: string;
+  LowestRatedReview: string;
 
   @Column()
-  highestRating: string;
+  HighestRatedReview: string;
 }

@@ -74,14 +74,14 @@ export class InfoScraperHelper {
     return +this.$('div.i-stars__09f24__M1AR7').data('aria-label');
   };
 
-  scrapeLowestRating = (): string => {
+  scrapeLowestRatedReview = (): string => {
     return this.$('div.margin-b1-5__09f24__NHcQi')
       .find('p.css-levauet')
       .text()
       .trim();
   };
 
-  scrapeHighestRating = (): string => {
+  scrapeHighestRatedReview = (): string => {
     return this.$('div.margin-b1-5__09f24__NHcQi')
       .find('p.css-levauet')
       .text()

@@ -23,8 +23,8 @@ export class ScraperService {
     const city: string = infoScraperHelper.setCity(queryCity);
     const phone: string = infoScraperHelper.scrapePhone();
     const rating: number = infoScraperHelper.scrapeRating();
-    const lowestRating: string = infoScraperHelper.scrapeLowestRating();
-    const highestRating: string = infoScraperHelper.scrapeHighestRating();
+    const lowestRating: string = infoScraperHelper.scrapeLowestRatedReview();
+    const highestRating: string = infoScraperHelper.scrapeHighestRatedReview();
     return {
       name,
       description,

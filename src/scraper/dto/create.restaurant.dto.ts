@@ -33,8 +33,8 @@ export class CreateRestaurantDto {
   readonly rating: number;
 
   @IsNumber()
-  readonly lowestRating: string;
+  readonly LowestRatedReview: string;
 
   @IsNumber()
-  readonly highestRating: string;
+  readonly HighestRatedReview: string;
 }
