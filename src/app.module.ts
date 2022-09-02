@@ -1,11 +1,23 @@
+import { MailerModule } from '@nestjs-modules/mailer';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 import { Restaurant } from './scraper/entities/restaurant.entity';
 import { ScraperModule } from './scraper/scraper.module';
+import { EmailController } from './email/email.controller';
 
 @Module({
   imports: [
+    MailerModule.forRoot({
+      transport: {
+        host: 'smtp.sendgrid.net',
+        auth: {
+          user: 'apikey',
+          pass: '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',
+        },
+      },
+    }),
     ConfigModule.forRoot({
       envFilePath: '.env',
     }),
@@ -17,9 +29,13 @@ import { ScraperModule } from './scraper/scraper.module';
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
       entities: [Restaurant],
-      synchronize: true,
+      synchronize: process.env.NODE_ENV !== 'prod',
+      autoLoadEntities: true,
     }),
     ScraperModule,
   ],
+  controllers: [EmailController],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}

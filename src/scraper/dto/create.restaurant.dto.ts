@@ -1,6 +1,15 @@
-import { IsArray, IsNotEmpty, IsNumber, IsString } from "class-validator";
+import {
+  IsArray,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsUUID,
+} from 'class-validator';
 
 export class CreateRestaurantDto {
+  @IsUUID()
+  readonly id: string;
+
   @IsString()
   @IsNotEmpty()
   readonly name: string;
@@ -33,8 +42,8 @@ export class CreateRestaurantDto {
   readonly rating: string;
 
   @IsString()
-  readonly LowestRatedReview: string;
+  readonly lowestRatedReview: string;
 
   @IsString()
-  readonly HighestRatedReview: string;
+  readonly highestRatedReview: string;
 }
