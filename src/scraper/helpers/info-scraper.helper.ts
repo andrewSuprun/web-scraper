@@ -13,7 +13,7 @@ export class InfoScraperHelper {
     this.$('a.css-1m051bw')
       .filter((_i, el) => /^\/biz\//.test(this.$(el).attr('href')))
       .each((i, el) => {
-        links.push(this.$(el).attr('href')); //"/biz/da-andrea-new-york"
+        links.push(this.$(el).attr('href'));
         return true;
       });
     return links;
@@ -24,7 +24,6 @@ export class InfoScraperHelper {
       .find('h1')
       .text()
       .trim();
-    // console.log(name, '<-Name');
     return name;
   };
 
@@ -32,18 +31,15 @@ export class InfoScraperHelper {
     const description: string = this.$('div.margin-b1-5__09f24__NHcQi')
       .find('p.css-1evauet')
       .text();
-    // console.log(description, 'Description');
     return description;
   };
 
   scrapeAddress = (): string => {
     const address = this.$('div.css-1vhakgw').find('p.css-qyp8bo').text();
-    // console.log(address, 'Address');
     return address;
   };
 
   setCity = (city): string => {
-    // console.log(city, 'City');
     return city;
   };
 
@@ -52,18 +48,15 @@ export class InfoScraperHelper {
       .find('p.css-1p9ibgf')
       .eq(-2)
       .text();
-    // console.log(phone, '<-Phone');
     return phone;
   };
 
   scrapeImages = (): string[] => {
     const imglinks: string[] = [];
     this.$('div.photo-header-media__09f24__ojlZt').each((i, el) => {
-      // // console.log(this.$(el).find('a.css-1sie4w0').find('img').attr('src'));
       imglinks.push(this.$(el).find('a.css-1sie4w0').find('img').attr('src'));
       return true;
     });
-    // console.log(imglinks);
     return imglinks.filter((el: string) => el);
   };
 
@@ -79,7 +72,7 @@ export class InfoScraperHelper {
   };
 
   scrapeWorkingHours = (): string[] => {
-     const workingHours: string[] = []
+    const workingHours: string[] = [];
     this.$('table')
       .find('tr')
       .each((_i, el) => {
@@ -91,13 +84,11 @@ export class InfoScraperHelper {
           workingHours.push(day);
         }
       });
-     // console.log(workingHours, 'wooooorking hours')
     return workingHours;
   };
 
   scrapeRating = (): string => {
     const rating = this.$('div.i-stars__09f24__M1AR7').attr('aria-label');
-    // console.log(rating, 'RATING');
     return rating + '';
   };
 

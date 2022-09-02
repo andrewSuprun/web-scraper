@@ -4,8 +4,6 @@ import { CreateRestaurantDto } from "./dto/create.restaurant.dto";
 import { Restaurant } from "./entities/restaurant.entity";
 import { ScraperService } from "./scraper.service";
 
-
-
 @ApiTags('Restaurants scraper')
 @Controller('scraper')
 export class ScraperController {
@@ -18,14 +16,4 @@ export class ScraperController {
   create(@Param('city') city: string) {
     return this.scraperService.scrapeRestaurantData(city);
   }
-
-  // @ApiOperation({
-  //   summary: 'Getting restaurants by search query from data base',
-  // })
-  // @ApiResponse({ status: 200, type: [Restaurant] })
-  // @Get('/:city')
-  // async getRestaurants(@Param('city') city: string, @Body('email') email: string) {
-  //   const res = await this.scraperService.getRestarauntsByCity(city);
-  //   return res;
-  // }
 }

@@ -1,3 +1,5 @@
+import { HttpException, HttpStatus } from '@nestjs/common';
+import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 import axios from 'axios';
 
 export class PageScraperHelper {
@@ -6,10 +8,12 @@ export class PageScraperHelper {
   scrapePage = async (url: string): Promise<string> => {
     try {
       const { data } = await axios.get(url);
-      // console.log(data, 'data------')
       return data + '';
     } catch (error) {
-      console.error(error.message);
+      throw new HttpException(
+        'Internal Server Error',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   };
 

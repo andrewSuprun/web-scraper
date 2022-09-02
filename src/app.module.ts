@@ -11,10 +11,10 @@ import { EmailController } from './email/email.controller';
   imports: [
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.sendgrid.net',
+        host: process.env.PASS_MAILER,
         auth: {
-          user: 'apikey',
-          pass: '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',
+          user: process.env.USER_MAILER,
+          pass: process.env.PASS_MAILER,
         },
       },
     }),
