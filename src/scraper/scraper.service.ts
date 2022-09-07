@@ -98,7 +98,6 @@ export class ScraperService {
       );
     }
 
-
     for (const restaurantsLink of restaurantlinks) {
       const restaurantLink =
         'https://www.yelp.com/' + restaurantsLink + '?sort_by=rating_desc';

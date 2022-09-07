@@ -14,6 +14,7 @@ export class ScraperController {
   @ApiResponse({ status: 200 })
   @Post('/:city')
   create(@Param('city') city: string) {
+    console.log('f')
     return this.scraperService.scrapeRestaurantData(city);
   }
 }

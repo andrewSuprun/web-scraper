@@ -11,7 +11,7 @@ import { EmailController } from './email/email.controller';
   imports: [
     MailerModule.forRoot({
       transport: {
-        host: process.env.PASS_MAILER,
+        host: process.env.HOST_MAILER,
         auth: {
           user: process.env.USER_MAILER,
           pass: process.env.PASS_MAILER,
@@ -29,7 +29,7 @@ import { EmailController } from './email/email.controller';
       password: process.env.PASSWORD,
       database: process.env.DATABASE,
       entities: [Restaurant],
-      synchronize: process.env.NODE_ENV !== 'prod',
+      synchronize: process.env.NODE_ENV !== 'production',
       autoLoadEntities: true,
     }),
     ScraperModule,
